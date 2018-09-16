@@ -1,0 +1,52 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27004.2005
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{A4FBB001-9573-4F6C-BB75-AD81006AAC1B}"
+	ProjectSection(SolutionItems) = preProject
+		TextFile1.txt = TextFile1.txt
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tg029.Storage.Core", "Tg029.Storage.Core\Tg029.Storage.Core.csproj", "{B7C9645D-BDAD-480A-9319-98FCA4BFC8D4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tg029.Storage.UI", "Tg029.Storage.UI\Tg029.Storage.UI.csproj", "{9A5914CC-13BB-4437-8A3E-5AF8325D6918}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tg029.Storage.Data", "Tg029.Storage.Data\Tg029.Storage.Data.csproj", "{BEDEB815-CF51-4AFA-BF7A-E173F253BC56}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tg029.Storage.Model", "Tg029.Storage.Model\Tg029.Storage.Model.csproj", "{53460C58-1FE2-48D5-A0E1-A6106662A7A1}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Tg029.Storage.Setup", "Tg029.Storage.Setup\Tg029.Storage.Setup.vdproj", "{F5DAEDD0-6513-4DE1-9E29-68A4AEC6BD18}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B7C9645D-BDAD-480A-9319-98FCA4BFC8D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B7C9645D-BDAD-480A-9319-98FCA4BFC8D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B7C9645D-BDAD-480A-9319-98FCA4BFC8D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B7C9645D-BDAD-480A-9319-98FCA4BFC8D4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9A5914CC-13BB-4437-8A3E-5AF8325D6918}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9A5914CC-13BB-4437-8A3E-5AF8325D6918}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9A5914CC-13BB-4437-8A3E-5AF8325D6918}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9A5914CC-13BB-4437-8A3E-5AF8325D6918}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BEDEB815-CF51-4AFA-BF7A-E173F253BC56}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BEDEB815-CF51-4AFA-BF7A-E173F253BC56}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BEDEB815-CF51-4AFA-BF7A-E173F253BC56}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BEDEB815-CF51-4AFA-BF7A-E173F253BC56}.Release|Any CPU.Build.0 = Release|Any CPU
+		{53460C58-1FE2-48D5-A0E1-A6106662A7A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{53460C58-1FE2-48D5-A0E1-A6106662A7A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{53460C58-1FE2-48D5-A0E1-A6106662A7A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{53460C58-1FE2-48D5-A0E1-A6106662A7A1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F5DAEDD0-6513-4DE1-9E29-68A4AEC6BD18}.Debug|Any CPU.ActiveCfg = Debug
+		{F5DAEDD0-6513-4DE1-9E29-68A4AEC6BD18}.Release|Any CPU.ActiveCfg = Release
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0499465A-54DC-4E1C-BFC4-93E874FE4D93}
+	EndGlobalSection
+EndGlobal

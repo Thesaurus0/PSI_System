@@ -1,0 +1,163 @@
+﻿/*****************************************************************
+ * 
+ * 本代码仅供【众志进销存管理系统视频教程】配套学习使用，不得用于
+ * 任何商业用途，违者必究！
+ * 
+ * =====不得传播、转载！=====
+ * 
+ * 版权所有： 众志教程网(www.tg029.com)
+ * 作者    ： 王继彬
+ * 
+ * *************************************************************/
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Text;
+using System.Windows.Forms;
+using Tg029.Storage.Model;
+using Tg029.Storage.Core;
+
+namespace Tg029.Storage.UI.Info
+{
+    public partial class FrmGoods : Form
+    {
+        private Goods _Model { get; set; }
+
+        /// <summary>
+        /// 用于创建
+        /// </summary>
+        public FrmGoods()
+        {
+            InitializeComponent();
+            this.Text = string.Format(this.Text, "新建");
+        }
+
+        /// <summary>
+        /// 用于修改
+        /// </summary>
+        /// <param name="model"></param>
+        public FrmGoods(Goods model)
+        {
+            InitializeComponent();
+            this._Model = model;
+
+            this.Text = string.Format(this.Text, "修改");
+            this.txtCode.Text = model.Code;
+            this.txtName.Text = model.Name;
+            this.txtUnit.Text = model.Unit;
+            this.txtStandard.Text = model.Standard;
+            this.cmbCategory.SelectedItem = model.Category;
+            this.cmbFrom.SelectedItem = model.From;
+            this.txtRemark.Text = model.Remark;
+        }
+
+        private void btnOK_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                //Verify
+                if (string.IsNullOrEmpty(this.txtCode.Text.Trim()))
+                {
+                    throw new ApplicationException("编码不能为空");
+                }
+                if (string.IsNullOrEmpty(this.txtName.Text.Trim()))
+                {
+                    throw new ApplicationException("名称不能为空");
+                }
+                if (string.IsNullOrEmpty(this.txtUnit.Text.Trim()))
+                {
+                    throw new ApplicationException("单位不能为空");
+                }
+                if (string.IsNullOrEmpty(this.txtStandard.Text.Trim()))
+                {
+                    throw new ApplicationException("规格不能为空");
+                }
+                if (this.cmbCategory.SelectedItem == null)
+                {
+                    throw new ApplicationException("品种不能为空");
+                }
+                if (this.cmbFrom.SelectedItem == null)
+                {
+                    throw new ApplicationException("产地不能为空");
+                }
+
+                //Save
+                ModelService service = new ModelService();
+                if (this._Model == null) //新建
+                {
+                    if (service.GetGoodsByCode(this.txtCode.Text.Trim()) != null)
+                    {
+                        throw new ApplicationException(string.Format("编码{0}已经被使用，请尝试其他编码。", this.txtCode.Text.Trim()));
+                    }
+                    Goods newModel = new Goods();
+                    newModel.Code = this.txtCode.Text.Trim();
+                    newModel.Name = this.txtName.Text.Trim();
+                    newModel.Remark = this.txtRemark.Text.Trim();
+                    newModel.Unit = this.txtUnit.Text.Trim();
+                    newModel.Standard = this.txtStandard.Text.Trim();
+                    newModel.Category = (GoodsCategory)this.cmbCategory.SelectedItem;
+                    newModel.From = (GoodsFrom)this.cmbFrom.SelectedItem;
+                    newModel.Actived = true;
+                    service.CreateGoods(newModel, PermissionService.GetCurrentUser().Name);
+                }
+                else//修改
+                {
+                    this._Model.Code = this.txtCode.Text.Trim();
+                    this._Model.Name = this.txtName.Text.Trim();
+                    this._Model.Remark = this.txtRemark.Text.Trim();
+                    this._Model.Unit = this.txtUnit.Text.Trim();
+                    this._Model.Standard = this.txtStandard.Text.Trim();
+                    this._Model.Category = (GoodsCategory)this.cmbCategory.SelectedItem;
+                    this._Model.From = (GoodsFrom)this.cmbFrom.SelectedItem;
+                    service.SaveGoods(this._Model, PermissionService.GetCurrentUser().Name);
+                }
+
+                //Close dialog
+                this.DialogResult = DialogResult.OK;
+            }
+            catch (Exception ex)
+            {
+                ErrorHandler.OnError(ex);
+            }
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                //Close dialog
+                this.DialogResult = DialogResult.Cancel;
+            }
+            catch (Exception ex)
+            {
+                ErrorHandler.OnError(ex);
+            }
+        }
+
+
+        private void FrmGoods_Load(object sender, EventArgs e)
+        {
+            try
+            {
+                ModelService service = new ModelService();
+                List<GoodsFrom> fList = service.GetAllGoodsFroms();
+                List<GoodsCategory> cList = service.GetAllGoodsCategories();
+
+                this.cmbFrom.DataSource = fList;
+                this.cmbCategory.DataSource = cList;
+                if (this._Model == null)
+                {
+                    this.cmbFrom.SelectedItem = null;
+                    this.cmbCategory.SelectedItem = null;
+                }
+            }
+            catch (Exception ex)
+            {
+                ErrorHandler.OnError(ex);
+            }
+        }
+
+    }
+}
